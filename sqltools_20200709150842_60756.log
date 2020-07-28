@@ -1,0 +1,53 @@
+20-07-09 15:37:52.1168809 pid:60756 tid:1 sqltools Critical: 0 : An unhandled exception occurred: System.AggregateException: One or more errors occurred. (One or more errors occurred. (Error converting value {null} to type 'System.Int64'. Path 'params.rowsStartIndex', line 1, position 146.)) ---> System.AggregateException: One or more errors occurred. (Error converting value {null} to type 'System.Int64'. Path 'params.rowsStartIndex', line 1, position 146.) ---> Newtonsoft.Json.JsonSerializationException: Error converting value {null} to type 'System.Int64'. Path 'params.rowsStartIndex', line 1, position 146. ---> System.InvalidCastException: Null object cannot be converted to a value type.
+   at System.Convert.ChangeType(Object value, Type conversionType, IFormatProvider provider)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType(JsonReader reader, Object value, CultureInfo culture, JsonContract contract, Type targetType)
+   --- End of inner exception stack trace ---
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType(JsonReader reader, Object value, CultureInfo culture, JsonContract contract, Type targetType)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.SetPropertyValue(JsonProperty property, JsonConverter propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.Linq.JToken.ToObject(Type objectType, JsonSerializer jsonSerializer)
+   at Newtonsoft.Json.Linq.JToken.ToObject(Type objectType)
+   at Newtonsoft.Json.Linq.JToken.ToObject[T]()
+   at Microsoft.SqlTools.Hosting.Protocol.MessageDispatcher.<>c__DisplayClass24_0`2.<SetRequestHandler>b__0(Message requestMessage, MessageWriter messageWriter) in D:\a\1\s\src\Microsoft.SqlTools.Hosting\Hosting\Protocol\MessageDispatcher.cs:line 121
+   at Microsoft.SqlTools.Hosting.Protocol.MessageDispatcher.DispatchMessage(Message messageToDispatch, MessageWriter messageWriter) in D:\a\1\s\src\Microsoft.SqlTools.Hosting\Hosting\Protocol\MessageDispatcher.cs:line 269
+   at Microsoft.SqlTools.Hosting.Protocol.MessageDispatcher.ListenForMessages(CancellationToken cancellationToken) in D:\a\1\s\src\Microsoft.SqlTools.Hosting\Hosting\Protocol\MessageDispatcher.cs:line 255
+   at Microsoft.SqlTools.Utility.AsyncContext.Start(Func`1 asyncMainFunc) in D:\a\1\s\src\Microsoft.SqlTools.Hosting\Utility\AsyncContext.cs:line 49
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at Microsoft.SqlTools.Hosting.Protocol.ProtocolEndpoint.WaitForExit() in D:\a\1\s\src\Microsoft.SqlTools.Hosting\Hosting\Protocol\ProtocolEndpoint.cs:line 125
+   at Microsoft.SqlTools.ServiceLayer.Program.Main(String[] args) in D:\a\1\s\src\Microsoft.SqlTools.ServiceLayer\Program.cs:line 47
+---> (Inner Exception #0) System.AggregateException: One or more errors occurred. (Error converting value {null} to type 'System.Int64'. Path 'params.rowsStartIndex', line 1, position 146.) ---> Newtonsoft.Json.JsonSerializationException: Error converting value {null} to type 'System.Int64'. Path 'params.rowsStartIndex', line 1, position 146. ---> System.InvalidCastException: Null object cannot be converted to a value type.
+   at System.Convert.ChangeType(Object value, Type conversionType, IFormatProvider provider)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType(JsonReader reader, Object value, CultureInfo culture, JsonContract contract, Type targetType)
+   --- End of inner exception stack trace ---
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType(JsonReader reader, Object value, CultureInfo culture, JsonContract contract, Type targetType)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.SetPropertyValue(JsonProperty property, JsonConverter propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.Linq.JToken.ToObject(Type objectType, JsonSerializer jsonSerializer)
+   at Newtonsoft.Json.Linq.JToken.ToObject(Type objectType)
+   at Newtonsoft.Json.Linq.JToken.ToObject[T]()
+   at Microsoft.SqlTools.Hosting.Protocol.MessageDispatcher.<>c__DisplayClass24_0`2.<SetRequestHandler>b__0(Message requestMessage, MessageWriter messageWriter) in D:\a\1\s\src\Microsoft.SqlTools.Hosting\Hosting\Protocol\MessageDispatcher.cs:line 121
+   at Microsoft.SqlTools.Hosting.Protocol.MessageDispatcher.DispatchMessage(Message messageToDispatch, MessageWriter messageWriter) in D:\a\1\s\src\Microsoft.SqlTools.Hosting\Hosting\Protocol\MessageDispatcher.cs:line 269
+   at Microsoft.SqlTools.Hosting.Protocol.MessageDispatcher.ListenForMessages(CancellationToken cancellationToken) in D:\a\1\s\src\Microsoft.SqlTools.Hosting\Hosting\Protocol\MessageDispatcher.cs:line 255
+   at Microsoft.SqlTools.Utility.AsyncContext.Start(Func`1 asyncMainFunc) in D:\a\1\s\src\Microsoft.SqlTools.Hosting\Utility\AsyncContext.cs:line 49
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+   --- End of inner exception stack trace ---
+---> (Inner Exception #0) Newtonsoft.Json.JsonSerializationException: Error converting value {null} to type 'System.Int64'. Path 'params.rowsStartIndex', line 1, position 146. ---> System.InvalidCastException: Null object cannot be converted to a value type.
+   at System.Convert.ChangeType(Object value, Type conversionType, IFormatProvider provider)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType(JsonReader reader, Object value, CultureInfo culture, JsonContract contract, Type targetType)
+   --- End of inner exception stack trace ---
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType(JsonReader reader, Object value, CultureInfo culture, JsonContract contract, Type targetType)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.SetPropertyValue(JsonProperty property, JsonConverter propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newO
