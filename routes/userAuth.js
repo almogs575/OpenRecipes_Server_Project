@@ -6,7 +6,6 @@ const bcrypt = require("bcrypt");
 
 router.post("/register", async (req, res, next) => {
   try {
-    let countries = await utils.getCountries();
     const users = await DButils.execQuery("SELECT username FROM dbo.users");
     if (users.find((x) => x.username === req.body.username))
       throw { status: 409, message: "Username taken" };
@@ -50,14 +49,13 @@ router.post("/login", async (req, res, next) => {
 });
 
 router.post("/logout", function (req, res) {
+  try {
   req.session.reset();
   console.log(req.session);
   res.send({ success: true, message: "logout succeeded" });
+  } catch (error) {
+    next(error);
+  }
 });
-
-// router.post("/Logout", function (req, res) {
-//   req.session.reset(); // reset the session info --> send cookie when  req.session == undefined!!
-//   res.send({ success: true, message: "logout succeeded" });
-// });
 
 module.exports = router;

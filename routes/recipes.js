@@ -23,7 +23,6 @@ router.use(function (req, res, next) {
 router.get("/information", async (req, res, next) => {
   try {
     let recipeID = req.query.id;
-    // let newRecipe = req.query.id;
 
     if (recipeID.length > 10 && req.user_id != undefined) {
       const familyRecipes = await DButils.execQuery(
@@ -39,17 +38,7 @@ router.get("/information", async (req, res, next) => {
         familyRecipes[0].analyzedInstructions = JSON.parse(
           familyRecipes[0].analyzedInstructions
         );
-        // let lastRecipes = await DButils.execQuery(
-        //   `SELECT watched_recipes FROM dbo.users WHERE user_id = '${req.user_id}'`
-        // );
-        // let newWatched;
-        // if (lastRecipes[0].watched_recipes != "")
-        //   newWatched = recipeID + "," + lastRecipes[0].watched_recipes;
-        // else newWatched = recipeID;
-
-        // await DButils.execQuery(
-        //   `UPDATE dbo.users Set watched_recipes =CAST('${newWatched}' AS varchar) WHERE user_id = '${req.user_id}'`
-        // );
+      
         res.send(familyRecipes[0]);
       }
       if (personalRecipes.length > 0) {
@@ -59,17 +48,7 @@ router.get("/information", async (req, res, next) => {
         personalRecipes[0].analyzedInstructions = JSON.parse(
           personalRecipes[0].analyzedInstructions
         );
-        // let lastRecipes = await DButils.execQuery(
-        //   `SELECT watched_recipes FROM dbo.users WHERE user_id = '${req.user_id}'`
-        // );
-        // let newWatched;
-        // if (lastRecipes[0].watched_recipes != "")
-        //   newWatched = recipeID + "," + lastRecipes[0].watched_recipes;
-        // else newWatched = recipeID;
-
-        // await DButils.execQuery(
-        //   `UPDATE dbo.users Set watched_recipes =CAST('${newWatched}' AS varchar) WHERE user_id = '${req.user_id}'`
-        // );
+       
         res.send(personalRecipes[0]);
       }
     } else {
@@ -117,7 +96,7 @@ router.get("/random", async (req, res, next) => {
       }
     });
 
-    let recipes = random_response.data.recipes; //.map((recipe) => recipe.data);
+    let recipes = random_response.data.recipes; 
     let recipesP = await utils.getPrevInfo(recipes);
 
     res.send(recipesP);

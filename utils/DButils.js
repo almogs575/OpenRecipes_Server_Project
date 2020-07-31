@@ -16,7 +16,6 @@ const config = {
 const pool = new sql.ConnectionPool(config);
 const poolConnect = pool
   .connect()
- // .then(() => console.log("new connection pool Created"))
   .catch((err) => console.log(err));
 
 exports.execQuery = async function (query) {
